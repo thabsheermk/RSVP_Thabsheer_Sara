@@ -330,9 +330,9 @@ h6 {
     position: relative;
     width: 80px;
     height: 100px;
-    perspective: 1000px;
     font-size: 2rem;
     font-weight: bold;
+    perspective: 1000px;
 }
 
 .flip-card span {
@@ -346,24 +346,29 @@ h6 {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 8px;
+    backface-visibility: hidden;
 }
 
+/* TOP HALF */
 .flip-card .top {
     top: 0;
-    border-bottom: 1px solid #333;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #222;
 }
 
+/* BOTTOM HALF */
 .flip-card .bottom {
     bottom: 0;
+    border-radius: 0 0 8px 8px;
 }
 
+/* ANIMATION */
 .flip-card.flip .top {
-    animation: flipTop 0.4s ease-in-out;
+    animation: flipTop 0.4s forwards;
 }
 
 .flip-card.flip .bottom {
-    animation: flipBottom 0.4s ease-in-out;
+    animation: flipBottom 0.4s forwards;
 }
 
 @keyframes flipTop {
