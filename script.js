@@ -1,67 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-const weddingDate = new Date("May 31, 2026 11:00:00").getTime();
+    const weddingDate = new Date("May 31, 2026 11:00:00").getTime();
 
-function update(id, value) {
-    const el = document.getElementById(id);
-    if (!el) return;
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
 
-    if (el.innerText !== value) {
-        el.parentElement.classList.add('animate');
+        if (diff <= 0) return;
 
-        setTimeout(() => {
-            el.innerText = value;
-            el.parentElement.classList.remove('animate');
-        }, 150);
-    }
-}
+        document.getElementById('days').innerText =
+            String(Math.floor(diff / (1000*60*60*24))).padStart(2,'0');
 
-setInterval(() => {
-    const now = new Date().getTime();
-    const diff = weddingDate - now;
+        document.getElementById('hours').innerText =
+            String(Math.floor((diff/(1000*60*60))%24)).padStart(2,'0');
 
-    if (diff <= 0) return;
+        document.getElementById('minutes').innerText =
+            String(Math.floor((diff/(1000*60))%60)).padStart(2,'0');
 
-    const d = String(Math.floor(diff / (1000*60*60*24))).padStart(2,'0');
-    const h = String(Math.floor((diff/(1000*60*60))%24)).padStart(2,'0');
-    const m = String(Math.floor((diff/(1000*60))%60)).padStart(2,'0');
-    const s = String(Math.floor((diff/1000)%60)).padStart(2,'0');
+        document.getElementById('seconds').innerText =
+            String(Math.floor((diff/1000)%60)).padStart(2,'0');
 
-    update('days', d);
-    update('hours', h);
-    update('minutes', m);
-    update('seconds', s);
+    }, 1000);
 
-}, 1000);
+    const attendingInputs = document.querySelectorAll('input[name="attending"]');
+    const foodChoice = document.getElementById('food-choice');
 
-});
-const attendingInputs = document.querySelectorAll('input[name="attending"]');
-const foodChoice = document.getElementById('food-choice');
-
-attendingInputs.forEach(input => {
-    input.addEventListener('change', () => {
-        if (input.value === 'Yes' && input.checked) {
-            foodChoice.classList.remove('hidden');
-        } else {
-            foodChoice.classList.add('hidden');
-        }
+    attendingInputs.forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.value === 'Yes' && input.checked) {
+                foodChoice.classList.remove('hidden');
+            } else {
+                foodChoice.classList.add('hidden');
+            }
+        });
     });
-});
 
-// WHATSAPP SUBMIT
-document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const attending = document.querySelector('input[name="attending"]:checked').value;
-    const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
+        const name = document.getElementById('name').value;
+        const attending = document.querySelector('input[name="attending"]:checked').value;
+        const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
 
-    const message = `Hello, RSVP for wedding:\n\nName: ${name}\nAttending: ${attending}\nFood: ${food}`;
+        const message =
+`RSVP - Thabsheer & Sara Wedding
 
-    // 🔴 PUT YOUR NUMBER HERE (NO +, NO SPACES)
-    const phoneNumber = "919495014959";
+Name: ${name}
+Attending: ${attending}
+Food: ${food}`;
 
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        const phoneNumber = "91XXXXXXXXXX";
 
-    window.open(whatsappURL, '_blank');
+        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+    });
+
 });
