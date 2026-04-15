@@ -1,3 +1,64 @@
+/* GLOBAL THEME */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #fdfaf6, #f7f1e8);
+    color: #4a4a4a;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* SECTION TITLE */
+.section-title {
+    font-size: 2.8rem;
+    color: #b8965b;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* HERO OVERLAY */
+.hero-bg {
+    background: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=2070') center/cover no-repeat;
+}
+
+/* GLASS CARD */
+.card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+/* BUTTON */
+.btn-primary {
+    background: linear-gradient(135deg, #c9a96e, #a8834d);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* INPUTS */
+.form-input {
+    border: 1px solid #e5dccf;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #c9a96e;
+    box-shadow: 0 0 0 3px rgba(201,169,110,0.2);
+}
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #FDFBF8;
