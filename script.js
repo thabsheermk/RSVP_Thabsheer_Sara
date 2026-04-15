@@ -1,29 +1,19 @@
-// SHOW / HIDE FOOD OPTION
+document.addEventListener('DOMContentLoaded', () => {
+
 const weddingDate = new Date("May 31, 2026 11:00:00").getTime();
 
-function flip(id, newValue) {
+function update(id, value) {
     const el = document.getElementById(id);
+    if (!el) return;
 
-    const top = el.querySelector('.top');
-    const bottom = el.querySelector('.bottom');
-    const topFlip = el.querySelector('.top-flip');
-    const bottomFlip = el.querySelector('.bottom-flip');
+    if (el.innerText !== value) {
+        el.parentElement.classList.add('animate');
 
-    const current = top.innerText;
-
-    if (current === newValue) return;
-
-    // set initial values
-    topFlip.innerText = current;
-    bottomFlip.innerText = newValue;
-
-    el.classList.add('flip');
-
-    setTimeout(() => {
-        top.innerText = newValue;
-        bottom.innerText = newValue;
-        el.classList.remove('flip');
-    }, 500);
+        setTimeout(() => {
+            el.innerText = value;
+            el.parentElement.classList.remove('animate');
+        }, 150);
+    }
 }
 
 setInterval(() => {
@@ -37,12 +27,14 @@ setInterval(() => {
     const m = String(Math.floor((diff/(1000*60))%60)).padStart(2,'0');
     const s = String(Math.floor((diff/1000)%60)).padStart(2,'0');
 
-    flip('days', d);
-    flip('hours', h);
-    flip('minutes', m);
-    flip('seconds', s);
+    update('days', d);
+    update('hours', h);
+    update('minutes', m);
+    update('seconds', s);
 
 }, 1000);
+
+});
 const attendingInputs = document.querySelectorAll('input[name="attending"]');
 const foodChoice = document.getElementById('food-choice');
 
