@@ -1,20 +1,27 @@
 // SHOW / HIDE FOOD OPTION
 const weddingDate = new Date("May 31, 2026 11:00:00").getTime();
 
-function updateFlip(id, value) {
+function updateFlip(id, newValue) {
     const card = document.getElementById(id);
     const top = card.querySelector('.top');
     const bottom = card.querySelector('.bottom');
 
-    if (top.innerText !== value) {
-        card.classList.add('flip');
+    const current = top.innerText;
 
-        setTimeout(() => {
-            top.innerText = value;
-            bottom.innerText = value;
-            card.classList.remove('flip');
-        }, 200);
-    }
+    if (current === newValue) return;
+
+    card.classList.add('flip');
+
+    // Update AFTER top flips
+    setTimeout(() => {
+        top.innerText = newValue;
+    }, 200);
+
+    // Update bottom slightly later
+    setTimeout(() => {
+        bottom.innerText = newValue;
+        card.classList.remove('flip');
+    }, 400);
 }
 
 setInterval(() => {
