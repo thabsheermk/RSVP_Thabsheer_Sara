@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Thabsheer & Sara</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body-no-scroll">
+
+<div id="main-content-wrapper" class="main-content-wrapper">
+
+<!-- HERO -->
+<header class="hero-bg h-screen flex items-center justify-center text-white text-center">
+    <div class="bg-black bg-opacity-40 p-10 rounded-lg">
+        <h3 class="text-xl tracking-widest">WE ARE GETTING MARRIED</h3>
+        <h1 class="text-6xl font-bold mt-4">Thabsheer Muhammed & Sara Beevi</h1>
+        <p class="text-xl mt-2">May 31 | 11:00 AM</p>
+        <p class="text-lg mt-2">Athafy Auditorium, Vadakara, Calicut</p>
+    </div>
+</header>
+
+<!-- COUNTDOWN -->
+<section class="text-center py-20">
+    <h2 class="section-title">Countdown</h2>
+    <div id="countdown-timer" class="grid grid-cols-4 gap-4 text-3xl">
+        <div><div id="days">00</div><span>Days</span></div>
+        <div><div id="hours">00</div><span>Hours</span></div>
+        <div><div id="minutes">00</div><span>Minutes</span></div>
+        <div><div id="seconds">00</div><span>Seconds</span></div>
+    </div>
+</section>
+
+<!-- COUPLE -->
+<section class="text-center py-20">
+    <h2 class="section-title">The Couple</h2>
+
+    <div class="grid md:grid-cols-2 gap-10">
+        <div>
+            <img src="chachu.jpg" class="w-48 h-48 rounded-full mx-auto object-cover">
+            <h3 class="text-2xl mt-4">Thabsheer Muhammed</h3>
+        </div>
+
+        <div>
+            <img src="beebs.jpg" class="w-48 h-48 rounded-full mx-auto object-cover">
+            <h3 class="text-2xl mt-4">Sara Beevi</h3>
+        </div>
+    </div>
+</section>
+
+<!-- EVENT -->
+<section class="text-center py-20">
+    <h2 class="section-title">Wedding</h2>
+
+    <div class="card p-8 max-w-xl mx-auto">
+        <h3 class="text-2xl font-bold">Nikah Ceremony</h3>
+        <p class="mt-2">May 31, 2026</p>
+        <p>11:00 AM</p>
+        <p class="mt-2 font-semibold">Athafy Auditorium</p>
+        <p>Vadakara, Calicut</p>
+    </div>
+</section>
+
+<!-- RSVP -->
+<section class="py-20 text-center">
+    <h2 class="section-title">RSVP</h2>
+
+    <form id="rsvpForm" class="max-w-md mx-auto text-left">
+
+        <label>Name</label>
+        <input type="text" name="name" class="form-input mb-4" required>
+
+        <label>Will you attend?</label>
+        <div class="mb-4">
+            <label><input type="radio" name="attending" value="yes" required> Yes</label>
+            <label class="ml-4"><input type="radio" name="attending" value="no"> No</label>
+        </div>
+
+        <div id="food-choice" class="hidden">
+            <label>Food Preference</label>
+            <select name="food" class="form-input mb-4">
+                <option value="veg">Veg</option>
+                <option value="non-veg">Non-Veg</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-primary w-full">Submit</button>
+    </form>
+
+    <p id="form-message" class="mt-4"></p>
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
