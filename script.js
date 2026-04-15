@@ -1,4 +1,39 @@
 // SHOW / HIDE FOOD OPTION
+const weddingDate = new Date("May 31, 2026 11:00:00").getTime();
+
+function updateFlip(id, value) {
+    const card = document.getElementById(id);
+    const top = card.querySelector('.top');
+    const bottom = card.querySelector('.bottom');
+
+    if (top.innerText !== value) {
+        card.classList.add('flip');
+
+        setTimeout(() => {
+            top.innerText = value;
+            bottom.innerText = value;
+            card.classList.remove('flip');
+        }, 200);
+    }
+}
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const diff = weddingDate - now;
+
+    if (diff <= 0) return;
+
+    const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+    const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+    updateFlip('days-card', days);
+    updateFlip('hours-card', hours);
+    updateFlip('minutes-card', minutes);
+    updateFlip('seconds-card', seconds);
+
+}, 1000);
 const attendingInputs = document.querySelectorAll('input[name="attending"]');
 const foodChoice = document.getElementById('food-choice');
 
