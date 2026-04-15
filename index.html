@@ -28,11 +28,39 @@
 <!-- COUNTDOWN -->
 <section class="text-center py-20">
     <h2 class="section-title">Countdown</h2>
-    <div id="countdown-timer" class="grid grid-cols-4 gap-4 text-3xl">
-        <div><div id="days">00</div><span>Days</span></div>
-        <div><div id="hours">00</div><span>Hours</span></div>
-        <div><div id="minutes">00</div><span>Minutes</span></div>
-        <div><div id="seconds">00</div><span>Seconds</span></div>
+
+    <div class="flip-container">
+        <div class="flip-unit">
+            <div class="flip-card" id="days-card">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
+            <p>Days</p>
+        </div>
+
+        <div class="flip-unit">
+            <div class="flip-card" id="hours-card">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
+            <p>Hours</p>
+        </div>
+
+        <div class="flip-unit">
+            <div class="flip-card" id="minutes-card">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
+            <p>Minutes</p>
+        </div>
+
+        <div class="flip-unit">
+            <div class="flip-card" id="seconds-card">
+                <span class="top">00</span>
+                <span class="bottom">00</span>
+            </div>
+            <p>Seconds</p>
+        </div>
     </div>
 </section>
 
