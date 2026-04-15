@@ -1,27 +1,29 @@
 // SHOW / HIDE FOOD OPTION
 const weddingDate = new Date("May 31, 2026 11:00:00").getTime();
 
-function updateFlip(id, newValue) {
-    const card = document.getElementById(id);
-    const top = card.querySelector('.top');
-    const bottom = card.querySelector('.bottom');
+function flip(id, newValue) {
+    const el = document.getElementById(id);
+
+    const top = el.querySelector('.top');
+    const bottom = el.querySelector('.bottom');
+    const topFlip = el.querySelector('.top-flip');
+    const bottomFlip = el.querySelector('.bottom-flip');
 
     const current = top.innerText;
 
     if (current === newValue) return;
 
-    card.classList.add('flip');
+    // set initial values
+    topFlip.innerText = current;
+    bottomFlip.innerText = newValue;
 
-    // Update AFTER top flips
+    el.classList.add('flip');
+
     setTimeout(() => {
         top.innerText = newValue;
-    }, 200);
-
-    // Update bottom slightly later
-    setTimeout(() => {
         bottom.innerText = newValue;
-        card.classList.remove('flip');
-    }, 400);
+        el.classList.remove('flip');
+    }, 500);
 }
 
 setInterval(() => {
@@ -30,15 +32,15 @@ setInterval(() => {
 
     if (diff <= 0) return;
 
-    const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-    const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-    const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
-    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    const d = String(Math.floor(diff / (1000*60*60*24))).padStart(2,'0');
+    const h = String(Math.floor((diff/(1000*60*60))%24)).padStart(2,'0');
+    const m = String(Math.floor((diff/(1000*60))%60)).padStart(2,'0');
+    const s = String(Math.floor((diff/1000)%60)).padStart(2,'0');
 
-    updateFlip('days-card', days);
-    updateFlip('hours-card', hours);
-    updateFlip('minutes-card', minutes);
-    updateFlip('seconds-card', seconds);
+    flip('days', d);
+    flip('hours', h);
+    flip('minutes', m);
+    flip('seconds', s);
 
 }, 1000);
 const attendingInputs = document.querySelectorAll('input[name="attending"]');
