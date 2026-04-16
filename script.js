@@ -58,7 +58,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+let guestCount = 1;
 
+document.getElementById('increase').addEventListener('click', () => {
+    guestCount++;
+    document.getElementById('guestCount').innerText = guestCount;
+});
+
+document.getElementById('decrease').addEventListener('click', () => {
+    if (guestCount > 1) {
+        guestCount--;
+        document.getElementById('guestCount').innerText = guestCount;
+    }
+});
 let isSubmitting = false;
 
 document.getElementById('rsvpForm').addEventListener('submit', function(e) {
@@ -78,10 +90,10 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     document.getElementById('loadingPopup').classList.remove('hidden');
 
     const formData = new FormData();
-    formData.append("entry.1785543098", name);
+    formData.append("entry.1231794982", name);
     formData.append("entry.1765275837", attending);
     formData.append("entry.1741792252", food);
-
+    formData.append("entry.1785543098", guestCount);
     fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyiNNd3syoBJJTRtytipgX2dysse0KBbb_mCoiB3Hmfta7XQ/formResponse", {
         method: "POST",
         mode: "no-cors",
