@@ -58,22 +58,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    function doPost(e) {
-        var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  
-        var data = JSON.parse(e.postData.contents);
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = JSON.parse(e.postData.contents);
 
-       sheet.appendRow([
-          data.name,
-          data.attending,
-          data.food,
-          new Date()
-        ]);
+    sheet.appendRow([
+      data.name,
+      data.attending,
+      data.food,
+      new Date()
+    ]);
 
-        return ContentService
-          .createTextOutput(JSON.stringify({status: "success"}))
-          .setMimeType(ContentService.MimeType.JSON);
-    }
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ error: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
     document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -81,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const attending = document.querySelector('input[name="attending"]:checked').value;
     const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
 
-    const response = await fetch("https://docs.google.com/spreadsheets/d/1aPyepuV0esRZfMW1h1mvP7Iquyu7jEADPW4TRaMchXU/edit?usp=drivesdk", {
+    const response = await fetch("https://docs.google.com/spreadsheets/d/1aPyepuV0esRZfMW1h1mvP7Iquyu7jEADPW4TRaMchXU/exec", {
         method: "POST",
         body: JSON.stringify({
             name,
@@ -89,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
             food
         }),
         headers: {
-            "Content-Type": "application/json"
+            "text/plain;charset=utf-8"
         }
     });
 
