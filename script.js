@@ -99,15 +99,15 @@ function doPost(e) {
     const name = document.getElementById('name').value;
     const attending = document.querySelector('input[name="attending"]:checked').value;
     const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
+    const formData = new URLSearchParams();
+    formData.append("name", name);
+    formData.append("attending", attending);
+    formData.append("food", food);
 
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxTIm34h0kotxO9gsPpWsRm7rgv3G4wH2vC1njDRKjQ4wM8PG9zsBb7ErFdf7olFOCpFw/exec", {
+fetch("https://script.google.com/macros/s/AKfycbxTIm34h0kotxO9gsPpWsRm7rgv3G4wH2vC1njDRKjQ4wM8PG9zsBb7ErFdf7olFOCpFw/exec", {
         method: "POST",
         mode: "no-cors",
-        body: JSON.stringify({
-            name,
-            attending,
-            food
-        }),
+        body: formData,
         headers: {
             'Content-Type': 'text/plain;charset=utf-8'
         }
