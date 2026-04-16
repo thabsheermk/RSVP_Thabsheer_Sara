@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,147 +8,151 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div id="main-content-wrapper">
 
-<div id="main-content-wrapper">
+        <!-- HERO -->
+        <header class="hero-bg h-screen flex items-center justify-center text-white text-center parallax">
+            <div class="hero-content">
+                <h3 class="text-xl tracking-widest">WE ARE GETTING MARRIED</h3>
+                <h1 class="text-6xl md:text-7xl font-bold mt-4 tracking-wide">Thabsheer Muhammed</h1>
+                <h1 class="text-6xl md:text-7xl font-bold mt-4 tracking-wide"> & </h1>
+                <h1 class="text-6xl md:text-7xl font-bold mt-4 tracking-wide">Sara Beevi</h1>
+                <p class="text-xl mt-2">May 31 | 11:00 AM</p>
+                <p class="text-lg mt-2">Athafy Auditorium, Vadakara, Calicut</p>
+            </div>
+        </header>
 
-<!-- HERO -->
-<header class="hero-bg h-screen flex items-center justify-center text-white text-center parallax">
-    <div class="hero-content">
-        <h3 class="text-xl tracking-widest">WE ARE GETTING MARRIED</h3>
-        <h1 class="text-6xl md:text-7xl font-bold mt-4 tracking-wide">Thabsheer Muhammed</h1>
-        <h1 class="text-6xl md:text-7xl font-bold mt-4 tracking-wide"> & </h1>
-        <h1 class="text-6xl md:text-7xl font-bold mt-4 tracking-wide">Sara Beevi</h1>
-        <p class="text-xl mt-2">May 31 | 11:00 AM</p>
-        <p class="text-lg mt-2">Athafy Auditorium, Vadakara, Calicut</p>
+        <!-- COUNTDOWN -->
+        <section class="text-center py-20">
+            <h2 class="section-title">Countdown</h2>
+
+            <div class="countdown-grid">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <p>Days</p>
+                </div>
+
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <p>Hours</p>
+                </div>
+
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <p>Minutes</p>
+                </div>
+
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUPLE -->
+        <section class="text-center py-20 layer slow">
+            <h2 class="section-title">The Couple</h2>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <img src="chachu.jpg" class="w-48 h-48 rounded-full mx-auto object-cover">
+                    <h3 class="text-2xl mt-4">Thabsheer Muhammed</h3>
+                </div>
+
+                <div>
+                    <img src="beebs.jpg" class="w-48 h-48 rounded-full mx-auto object-cover">
+                    <h3 class="text-2xl mt-4">Sara Beevi</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR STORY -->
+        <section class="text-center py-20 layer">
+            <h2 class="section-title">Our Story</h2>
+
+            <p class="max-w-2xl mx-auto text-lg leading-relaxed">
+                From a simple beginning to a beautiful journey together,
+                every moment has brought us closer to this day.
+                Surrounded by love, laughter, and family,
+                we are excited to begin this new chapter together.
+            </p>
+        </section>
+
+        <!-- EVENT -->
+        <section class="text-center py-20">
+            <h2 class="section-title">Wedding</h2>
+
+            <div class="card p-8 max-w-xl mx-auto">
+                <h3 class="text-2xl font-bold">Nikah Ceremony</h3>
+                <p class="mt-2">May 31, 2026</p>
+                <p>11:00 AM</p>
+                <p class="mt-2 font-semibold">Athafy Auditorium</p>
+                <p>Vadakara, Calicut</p>
+                <a href="https://maps.app.goo.gl/TnktskRGZTaSDGJT9" target="_blank" class="map-btn mt-6 inline-block">
+                    📍 Navigate to Venue
+                </a>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="text-center py-20 layer fast">
+            <h2 class="section-title">RSVP</h2>
+
+            <form id="rsvpForm" class="max-w-md mx-auto text-left">
+
+                <label>Name</label>
+                <input type="text" id="name" class="form-input mb-4" required>
+
+                <label>Will you attend?</label>
+                <div class="mb-4">
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="attending" value="Yes"> Attending 🎉
+                    </label>
+                    <label class="flex items-center gap-2">
+                        <input type="radio" name="attending" value="No"> Not Attending
+                    </label>
+                </div>
+
+                <div class="guest-counter">
+                    <div id="guest-counter" class="hidden">
+                        <label>Number of Guests</label>
+                        <button type="button" id="decrease">−</button>
+                        <span id="guestCount">1</span>
+                        <button type="button" id="increase">+</button>
+                    </div>
+                </div>
+
+                <div id="food-choice" class="hidden">
+                    <label>Food Preference</label>
+                    <select id="food" class="form-input mb-4">
+                        <option value="Veg">Veg</option>
+                        <option value="Non-Veg">Non-Veg</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary w-full">
+                    Send RSVP
+                </button>
+            </form>
+
+            <p id="form-message" class="mt-4"></p>
+        </section>
     </div>
-</header>
 
-<!-- COUNTDOWN -->
-<section class="text-center py-20">
-    <h2 class="section-title">Countdown</h2>
+    <script src="script.js"></script>
 
-    <div class="countdown-grid">
-        <div class="time-box">
-            <span id="days">00</span>
-            <p>Days</p>
-        </div>
-
-        <div class="time-box">
-            <span id="hours">00</span>
-            <p>Hours</p>
-        </div>
-
-        <div class="time-box">
-            <span id="minutes">00</span>
-            <p>Minutes</p>
-        </div>
-
-        <div class="time-box">
-            <span id="seconds">00</span>
-            <p>Seconds</p>
+    <div id="loadingPopup" class="loading-overlay hidden">
+        <div class="loading-box">
+            <div class="spinner"></div>
+            <p>Sending your RSVP...</p>
         </div>
     </div>
-</section>
-
-<!-- COUPLE -->
-<section class="text-center py-20 layer slow">
-    <h2 class="section-title">The Couple</h2>
-
-    <div class="grid md:grid-cols-2 gap-10">
-        <div>
-            <img src="chachu.jpg" class="w-48 h-48 rounded-full mx-auto object-cover">
-            <h3 class="text-2xl mt-4">Thabsheer Muhammed</h3>
-        </div>
-
-        <div>
-            <img src="beebs.jpg" class="w-48 h-48 rounded-full mx-auto object-cover">
-            <h3 class="text-2xl mt-4">Sara Beevi</h3>
-        </div>
-    </div>
-</section>
-    <section class="text-center py-20 layer">
-    <h2 class="section-title">Our Story</h2>
-
-    <p class="max-w-2xl mx-auto text-lg leading-relaxed">
-        From a simple beginning to a beautiful journey together,  
-        every moment has brought us closer to this day.  
-        Surrounded by love, laughter, and family,  
-        we are excited to begin this new chapter together.
-    </p>
-    </section>
-
-<!-- EVENT -->
-<section class="text-center py-20">
-    <h2 class="section-title">Wedding</h2>
-
-    <div class="card p-8 max-w-xl mx-auto">
-        <h3 class="text-2xl font-bold">Nikah Ceremony</h3>
-        <p class="mt-2">May 31, 2026</p>
-        <p>11:00 AM</p>
-        <p class="mt-2 font-semibold">Athafy Auditorium</p>
-        <p>Vadakara, Calicut</p>
-        <a href="https://maps.app.goo.gl/TnktskRGZTaSDGJT9" target="_blank" class="map-btn mt-6 inline-block">
-          📍 Navigate to Venue
-        </a>
-    </div>
-</section>
-
-<!-- RSVP -->
-<section class="text-center py-20 layer fast">
-    <h2 class="section-title">RSVP</h2>
-
-    <form id="rsvpForm" class="max-w-md mx-auto text-left">
-
-        <label>Name</label>
-        <input type="text" id="name" class="form-input mb-4" required>
-
-        <label>Will you attend?</label>
-        <div class="mb-4">
-    <label class="flex items-center gap-2">
-        <input type="radio" name="attending" value="Yes"> Attending 🎉
-    </label>
-    <label class="flex items-center gap-2">
-        <input type="radio" name="attending" value="No"> Not Attending
-    </label>
-       </div>
-
-    <div class="guest-counter">
-        <div id="guest-counter" class="hidden">
-            <label>Number of Guests</label>
-            <button type="button" id="decrease">−</button>
-            <span id="guestCount">1</span>
-            <button type="button" id="increase">+</button>
-        </div>
-    </div>
-        <div id="food-choice" class="hidden">
-            <label>Food Preference</label>
-            <select id="food" class="form-input mb-4">
-                <option value="Veg">Veg</option>
-                <option value="Non-Veg">Non-Veg</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn-primary w-full">
-            Send RSVP
-        </button>
-    </form>
-
-    <p id="form-message" class="mt-4"></p>
-</section>
-
-</div>
-
-<script src="script.js"></script>
-<div id="loadingPopup" class="loading-overlay hidden">
-    <div class="loading-box">
-        <div class="spinner"></div>
-        <p>Sending your RSVP...</p>
-    </div>
-</div>
 </body>
 </html>
