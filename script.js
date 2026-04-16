@@ -62,23 +62,35 @@ document.addEventListener('DOMContentLoaded', () => {
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = JSON.parse(e.postData.contents);
+
+    // 🔥 SAFE PARSE (handles undefined cases)
+    var data = {};
+
+    if (e.postData && e.postData.contents) {
+      data = JSON.parse(e.postData.contents);
+    } else {
+      data = {
+        name: e.parameter.name,
+        attending: e.parameter.attending,
+        food: e.parameter.food
+      };
+    }
 
     sheet.appendRow([
-      data.name,
-      data.attending,
-      data.food,
+      data.name || "No Name",
+      data.attending || "No Response",
+      data.food || "N/A",
       new Date()
     ]);
 
     return ContentService
-      .createTextOutput(JSON.stringify({ status: "success" }))
-      .setMimeType(ContentService.MimeType.JSON);
+      .createTextOutput("success")
+      .setMimeType(ContentService.MimeType.TEXT);
 
   } catch (err) {
     return ContentService
-      .createTextOutput(JSON.stringify({ error: err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
+      .createTextOutput("error: " + err)
+      .setMimeType(ContentService.MimeType.TEXT);
   }
 }
     document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
