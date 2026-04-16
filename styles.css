@@ -376,35 +376,55 @@ h6 {
 }
 
 .countdown-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .time-box {
     background: rgba(255,255,255,0.8);
     backdrop-filter: blur(10px);
-    padding: 20px 25px;
-    border-radius: 16px;
-    min-width: 90px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 12px 10px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     border: 1px solid rgba(200,170,120,0.2);
 }
 
+/* numbers */
 .time-box span {
-    font-size: 2.8rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #b8965b;
 }
 
+/* labels */
 .time-box p {
-    margin-top: 5px;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     letter-spacing: 1px;
     color: #777;
 }
 
+/* 💻 desktop enhancement */
+@media (min-width: 768px) {
+    .countdown-grid {
+        gap: 20px;
+    }
+
+    .time-box {
+        padding: 20px 25px;
+    }
+
+    .time-box span {
+        font-size: 2.8rem;
+    }
+
+    .time-box p {
+        font-size: 0.85rem;
+    }
+}
 /* smooth update animation */
 .time-box.animate {
     transform: translateY(-5px);
