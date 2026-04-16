@@ -591,3 +591,8 @@ section {
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+#form-message {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
