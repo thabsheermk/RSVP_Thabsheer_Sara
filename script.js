@@ -74,7 +74,7 @@ Name: ${name}
 Attending: ${attending}
 Food: ${food}`;
 
-        const phoneNumber = "91XXXXXXXXXX";
+        const phoneNumber = "919495014959";
 
         window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
     });
