@@ -96,7 +96,7 @@ function doPost(e) {
             food
         }),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'text/plain;charset=utf-8'
         }
     });
 
