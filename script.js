@@ -49,12 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const attendingInputs = document.querySelectorAll('input[name="attending"]');
     const foodChoice = document.getElementById('food-choice');
+    const guestCounter = document.getElementById('guest-counter');
     attendingInputs.forEach(input => {
         input.addEventListener('change', () => {
             if (input.value === 'Yes' && input.checked) {
                 foodChoice.classList.remove('hidden');
+                guestCounter.classList.remove('hidden');
             } else {
                 foodChoice.classList.add('hidden');
+                guestCounter.classList.add('hidden');
             }
         });
     });
