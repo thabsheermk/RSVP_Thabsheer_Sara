@@ -88,7 +88,7 @@ function doPost(e) {
     const attending = document.querySelector('input[name="attending"]:checked').value;
     const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
 
-    const response = await fetch("https://docs.google.com/spreadsheets/d/1aPyepuV0esRZfMW1h1mvP7Iquyu7jEADPW4TRaMchXU/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxTIm34h0kotxO9gsPpWsRm7rgv3G4wH2vC1njDRKjQ4wM8PG9zsBb7ErFdf7olFOCpFw/exec", {
         method: "POST",
         body: JSON.stringify({
             name,
