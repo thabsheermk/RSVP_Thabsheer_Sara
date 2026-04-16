@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -100,6 +101,6 @@ function doPost(e) {
     });
 
     document.getElementById('form-message').innerText =
-        "✅ RSVP submitted successfully!";
+        "✅ RSVP submitted successfully!" + response.toString();
 });
 });
