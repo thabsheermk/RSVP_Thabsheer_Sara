@@ -114,6 +114,6 @@ fetch("https://script.google.com/macros/s/AKfycbxTIm34h0kotxO9gsPpWsRm7rgv3G4wH2
     });
 
     document.getElementById('form-message').innerText =
-        "✅ RSVP submitted successfully!" + response.toString();
+        "✅ RSVP submitted successfully!"
 });
 });
