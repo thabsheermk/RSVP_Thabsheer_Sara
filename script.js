@@ -22,6 +22,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }, 1000);
 
+    // SCROLL REVEAL
+    const layers = document.querySelectorAll('.layer');
+
+    function revealLayers() {
+        const trigger = window.innerHeight * 0.85;
+
+        layers.forEach(layer => {
+            const top = layer.getBoundingClientRect().top;
+
+            if (top < trigger) {
+                layer.classList.add('show');
+            }
+        });
+    }
+
+    // PARALLAX EFFECT
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        document.querySelector('.hero-content').style.transform =
+            `translateY(${scrollY * 0.2}px)`;
+    });
+
+    window.addEventListener('scroll', revealLayers);
+    revealLayers();
+
     const attendingInputs = document.querySelectorAll('input[name="attending"]');
     const foodChoice = document.getElementById('food-choice');
 
