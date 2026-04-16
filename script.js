@@ -49,34 +49,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const attendingInputs = document.querySelectorAll('input[name="attending"]');
     const foodChoice = document.getElementById('food-choice');
+    
+    function doPost(e) {
+        var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  
+        var data = JSON.parse(e.postData.contents);
 
-    attendingInputs.forEach(input => {
-        input.addEventListener('change', () => {
-            if (input.value === 'Yes' && input.checked) {
-                foodChoice.classList.remove('hidden');
-            } else {
-                foodChoice.classList.add('hidden');
-            }
-        });
+       sheet.appendRow([
+          data.name,
+          data.attending,
+          data.food,
+          new Date()
+        ]);
+
+        return ContentService
+          .createTextOutput(JSON.stringify({status: "success"}))
+          .setMimeType(ContentService.MimeType.JSON);
+    }
+    document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const attending = document.querySelector('input[name="attending"]:checked').value;
+    const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
+
+    const response = await fetch("https://docs.google.com/spreadsheets/d/1aPyepuV0esRZfMW1h1mvP7Iquyu7jEADPW4TRaMchXU/edit?usp=drivesdk", {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            attending,
+            food
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
     });
 
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const attending = document.querySelector('input[name="attending"]:checked').value;
-        const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
-
-        const message =
-`RSVP - Thabsheer & Sara Wedding
-
-Name: ${name}
-Attending: ${attending}
-Food: ${food}`;
-
-        const phoneNumber = "919495014959";
-
-        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-    });
-
+    document.getElementById('form-message').innerText =
+        "✅ RSVP submitted successfully!";
+});
 });
