@@ -608,3 +608,52 @@ section {
 .story-section:hover {
     background-size: 115%;
 }
+
+/* NIKAH BACKGROUND */
+.nikah-section {
+    background: url('hold.jpg') center/cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* OVERLAY */
+.nikah-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+    padding: 40px 50px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    max-width: 500px;
+}
+
+/* TEXT STYLING */
+.nikah-date {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.nikah-venue {
+    margin-top: 10px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .nikah-overlay {
+        padding: 25px;
+    }
+
+    .nikah-section {
+        min-height: 60vh;
+    }
+}
+
+.nikah-overlay {
+    border: 1px solid rgba(201,169,110,0.4);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
