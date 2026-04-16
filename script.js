@@ -59,61 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-function doPost(e) {
-  try {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-
-    // 🔥 SAFE PARSE (handles undefined cases)
-    var data = {};
-
-    if (e.postData && e.postData.contents) {
-      data = JSON.parse(e.postData.contents);
-    } else {
-      data = {
-        name: e.parameter.name,
-        attending: e.parameter.attending,
-        food: e.parameter.food
-      };
-    }
-
-    sheet.appendRow([
-      data.name || "No Name",
-      data.attending || "No Response",
-      data.food || "N/A",
-      new Date()
-    ]);
-
-    return ContentService
-      .createTextOutput("success")
-      .setMimeType(ContentService.MimeType.TEXT);
-
-  } catch (err) {
-    return ContentService
-      .createTextOutput("error: " + err)
-      .setMimeType(ContentService.MimeType.TEXT);
-  }
-}
-    document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
     const name = document.getElementById('name').value;
     const attending = document.querySelector('input[name="attending"]:checked').value;
     const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
-    const formData = new URLSearchParams();
-    formData.append("name", name);
-    formData.append("attending", attending);
-    formData.append("food", food);
 
-fetch("https://script.google.com/macros/s/AKfycbxTIm34h0kotxO9gsPpWsRm7rgv3G4wH2vC1njDRKjQ4wM8PG9zsBb7ErFdf7olFOCpFw/exec", {
+    const formData = new FormData();
+    formData.append("entry.1785543098", name);
+    formData.append("entry.1765275837", attending);
+    formData.append("entry.1741792252", food);
+
+    fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSdyiNNd3syoBJJTRtytipgX2dysse0KBbb_mCoiB3Hmfta7XQ/formResponse", {
         method: "POST",
         mode: "no-cors",
-        body: formData,
-        headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-        }
+        body: formData
     });
 
     document.getElementById('form-message').innerText =
-        "✅ RSVP submitted successfully!"
+        "✅ RSVP submitted successfully!";
 });
 });
