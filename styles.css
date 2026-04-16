@@ -490,3 +490,22 @@ section {
 .layer.fast {
     transition-duration: 0.5s;
 }
+
+.map-btn {
+    background: linear-gradient(135deg, #c9a96e, #a8834d);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.map-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
