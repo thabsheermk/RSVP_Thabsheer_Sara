@@ -63,7 +63,10 @@ let isSubmitting = false;
 
 document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
+    const name = document.getElementById('name').value;
+    const attending = document.querySelector('input[name="attending"]:checked').value;
+    const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
+    
     if (isSubmitting) return; // 🚫 block repeat
     isSubmitting = true;
 
