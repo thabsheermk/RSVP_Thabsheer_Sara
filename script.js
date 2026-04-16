@@ -59,12 +59,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+let isSubmitting = false;
+
 document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const attending = document.querySelector('input[name="attending"]:checked').value;
-    const food = attending === 'Yes' ? document.getElementById('food').value : 'N/A';
+    if (isSubmitting) return; // 🚫 block repeat
+    isSubmitting = true;
+
+    const button = this.querySelector('button');
+    button.disabled = true;
+    button.innerText = "Sending...";
+
+    // 🔥 show popup
+    document.getElementById('loadingPopup').classList.remove('hidden');
 
     const formData = new FormData();
     formData.append("entry.1785543098", name);
@@ -77,7 +85,15 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e) {
         body: formData
     });
 
-    document.getElementById('form-message').innerText =
-        "✅ RSVP submitted successfully!";
+   
+    // ✅ simulate success (since no-cors)
+    setTimeout(() => {
+        document.getElementById('loadingPopup').classList.add('hidden');
+
+        document.getElementById('form-message').innerText =
+            "✅ RSVP submitted successfully!";
+
+        button.innerText = "Submitted ✓";
+    }, 1500);
 });
 });
