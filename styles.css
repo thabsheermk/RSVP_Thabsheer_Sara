@@ -47,18 +47,52 @@ h1, h2, h3 {
 }
 
 /* INPUTS */
-.form-input {
-    border: 1px solid #e5dccf;
-    padding: 10px;
-    border-radius: 10px;
-    width: 100%;
+/* RSVP spacing */
+#rsvpForm {
+    padding: 0 16px;
 }
 
-.form-input:focus {
-    outline: none;
-    border-color: #c9a96e;
-    box-shadow: 0 0 0 3px rgba(201,169,110,0.2);
+/* labels */
+#rsvpForm label {
+    font-size: 0.9rem;
+    color: #777;
+    display: block;
+    margin-bottom: 6px;
 }
+
+/* inputs */
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #e5dccf;
+    margin-bottom: 18px;
+    font-size: 1rem;
+}
+
+/* radio buttons layout */
+#rsvpForm .mb-4 {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* stack on small screens */
+@media (max-width: 480px) {
+    #rsvpForm .mb-4 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+/* button breathing */
+.btn-primary {
+    margin-top: 10px;
+    padding: 14px;
+    font-size: 1rem;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #FDFBF8;
