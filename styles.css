@@ -561,3 +561,50 @@ section {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+/* STORY BACKGROUND */
+.story-section {
+    background: url('hold.jpg') center/cover no-repeat;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* DARK OVERLAY */
+.story-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 700px;
+    color: white;
+}
+
+/* TEXT */
+.story-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .story-section {
+        background-attachment: scroll; /* prevent jitter */
+    }
+
+    .story-overlay {
+        padding: 25px;
+    }
+}
+
+.story-section {
+    background-size: 110%;
+    transition: background-size 6s ease;
+}
+
+.story-section:hover {
+    background-size: 115%;
+}
