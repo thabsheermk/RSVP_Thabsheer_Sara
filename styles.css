@@ -5,6 +5,13 @@ body {
     color: #4a4a4a;
 }
 
+/* Fix jitter on mobile */
+* {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
 /* HEADINGS */
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
