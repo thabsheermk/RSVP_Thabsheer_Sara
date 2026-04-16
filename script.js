@@ -90,6 +90,7 @@ function doPost(e) {
 
     const response = await fetch("https://script.google.com/macros/s/AKfycbxTIm34h0kotxO9gsPpWsRm7rgv3G4wH2vC1njDRKjQ4wM8PG9zsBb7ErFdf7olFOCpFw/exec", {
         method: "POST",
+        mode: "no-cors",
         body: JSON.stringify({
             name,
             attending,
