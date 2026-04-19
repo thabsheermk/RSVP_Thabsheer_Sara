@@ -621,7 +621,7 @@ section {
 
 /* OVERLAY */
 .nikah-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(110 117 110 / 72%);
     backdrop-filter: blur(6px);
     padding: 40px 50px;
     border-radius: 20px;
